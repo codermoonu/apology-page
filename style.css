@@ -274,6 +274,29 @@ body {
     gap: 10px;
     font-family: var(--font-mono);
     font-size: 1.1rem;
+    position: relative;
+    /* For absolute emoji positioning */
+}
+
+.sad-emoji-drop {
+    position: absolute;
+    right: 0;
+    font-size: 3rem;
+    line-height: 1;
+    animation: dropSad 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    pointer-events: none;
+}
+
+@keyframes dropSad {
+    0% {
+        transform: translateY(-50px) rotate(-20deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
 }
 
 input[type="checkbox"] {
@@ -411,7 +434,9 @@ input[type="checkbox"] {
 
 .modal-meme {
     width: 100%;
+    max-height: 60vh;
     height: auto;
+    object-fit: contain;
     border: 2px solid #000;
     border-radius: 4px;
     cursor: pointer;
@@ -469,6 +494,9 @@ input[type="checkbox"] {
     transform: scale(0.9) translate(3px, 3px);
     box-shadow: 2px 2px 0 #000;
     background: #ff6b81;
+    color: #ffeb3b;
+    border-color: #ffeb3b;
+    box-shadow: 4px 4px 0 #ffeb3b;
 }
 
 /* Rage Meter */
@@ -509,19 +537,127 @@ input[type="checkbox"] {
 }
 
 .sticker-slot {
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    /* Bigger slots */
+    height: 90px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: visible;
+    /* ALLOW OVERFLOW now! */
+    /* border: 1px solid rgba(0, 0, 0, 0.1); remove debug border */
+    background: transparent;
+    /* transparent mainly */
 }
 
 .sticker {
     width: 100%;
-    height: auto;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
     animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.2s;
+    position: relative;
 }
 
 .sticker.hidden {
     display: none;
+}
+
+
+.sticker.big-bounce {
+    animation: bigBounce 0.8s ease-in-out;
+    /* Slower, bigger bounce */
+    z-index: 100;
+    /* Float on top of everything! */
+}
+
+@keyframes bigBounce {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-150px) scale(2.0) rotate(10deg);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+#maxRageOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 0, 0, 0.9);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-family: var(--font-header);
+    padding: 20px;
+}
+
+#maxRageOverlay.hidden {
+    display: none !important;
+}
+
+.rage-text {
+    font-size: 2rem;
+    line-height: 1.5;
+    text-shadow: 4px 4px 0 #000;
+    animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
 }
