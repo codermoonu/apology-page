@@ -1,0 +1,527 @@
+:root {
+    --bg-color: #ffebf0;
+    --window-bg: #ffffff;
+    --title-bar-start: #ff9a9e;
+    --title-bar-end: #fecfef;
+    --text-color: #5d5d5d;
+    --accent-pink: #ff6b81;
+    --accent-blue: #a2d2ff;
+    --font-header: 'Press Start 2P', cursive;
+    --font-body: 'Quicksand', sans-serif;
+    --font-mono: 'VT323', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image:
+        linear-gradient(45deg, #ffebf0 25%, transparent 25%, transparent 75%, #ffebf0 75%, #ffebf0),
+        linear-gradient(45deg, #ffebf0 25%, transparent 25%, transparent 75%, #ffebf0 75%, #ffebf0);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    font-family: var(--font-body);
+    color: var(--text-color);
+    overflow-x: hidden;
+    padding-bottom: 50px;
+}
+
+/* Container */
+.container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Floating Hearts */
+.pixel-heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path fill="%23ff6b81" d="M2,2 L4,2 L4,3 L5,3 L5,2 L7,2 L7,3 L8,3 L8,5 L7,5 L7,6 L6,6 L6,7 L5,7 L5,8 L4,8 L4,7 L3,7 L3,6 L2,6 L2,5 L1,5 L1,3 L2,3 Z"/></svg>') no-repeat center/contain;
+    z-index: -1;
+    animation: float 10s infinite linear;
+    opacity: 0.6;
+}
+
+.p-1 {
+    top: 10%;
+    left: 5%;
+    animation-duration: 12s;
+}
+
+.p-2 {
+    top: 40%;
+    right: 5%;
+    animation-duration: 15s;
+}
+
+.p-3 {
+    top: 80%;
+    left: 10%;
+    animation-duration: 9s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Retro Window Card */
+.window-card {
+    background: var(--window-bg);
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.title-bar {
+    background: linear-gradient(90deg, var(--title-bar-start), var(--title-bar-end));
+    padding: 8px 10px;
+    border-bottom: 2px solid #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-text {
+    font-family: var(--font-header);
+    font-size: 10px;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.window-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.window-controls div {
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-family: monospace;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.window-content {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Hero Section */
+.hero h1 {
+    font-family: var(--font-header);
+    color: var(--accent-pink);
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 0px #000;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.hero-img {
+    border: 2px solid #000;
+    border-radius: 4px;
+    max-width: 100%;
+}
+
+/* Notepad Confession */
+.notepad-window {
+    background: #fff;
+    border: 2px solid #000;
+    margin-bottom: 30px;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.notepad-title-bar {
+    background: #000080;
+    color: #fff;
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-header);
+    font-size: 10px;
+}
+
+.notepad-content {
+    padding: 15px;
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    line-height: 1.4;
+    text-align: left;
+}
+
+/* Timeline */
+.section-title {
+    font-family: var(--font-header);
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px dashed var(--accent-pink);
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+    padding-left: 15px;
+}
+
+.timeline-icon {
+    position: absolute;
+    left: -32px;
+    background: #fff;
+    border: 2px solid var(--accent-pink);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.timeline-content h3 {
+    font-family: var(--font-header);
+    font-size: 10px;
+    color: var(--accent-pink);
+}
+
+.timeline-content p {
+    font-size: 0.9rem;
+    background: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-top: 5px;
+    display: inline-block;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Meme Grid */
+.meme-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.meme-card {
+    background: #fff;
+    padding: 5px;
+    border: 2px solid #000;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    transform: rotate(odd) rotate(2deg);
+}
+
+.meme-card:nth-child(even) {
+    transform: rotate(-2deg);
+}
+
+.meme-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Checklist */
+.checklist {
+    list-style: none;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.checklist li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--accent-pink);
+    transform: scale(1.2);
+}
+
+/* Footer / Button */
+.final-plea {
+    text-align: center;
+    margin-top: 40px;
+    padding-bottom: 40px;
+}
+
+.retro-btn {
+    background: var(--accent-pink);
+    border: 2px solid #000;
+    padding: 15px 25px;
+    font-family: var(--font-header);
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 #000;
+    transition: all 0.1s;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.retro-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #000;
+}
+
+.hidden {
+    display: none;
+    margin-top: 20px;
+}
+
+#response-msg p {
+    font-family: var(--font-header);
+    color: var(--accent-pink);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    animation: popIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+    }
+
+    80% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Glitch Effect */
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -1px 0 red;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-1 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -1px 0 blue;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+    0% {
+        clip: rect(2px, 9999px, 5px, 0);
+    }
+
+    100% {
+        clip: rect(60px, 9999px, 80px, 0);
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        clip: rect(50px, 9999px, 70px, 0);
+    }
+
+    100% {
+        clip: rect(10px, 9999px, 30px, 0);
+    }
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(2px);
+    padding: 20px;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 400px;
+    animation: popIn 0.3s ease-out;
+}
+
+.modal-meme {
+    width: 100%;
+    height: auto;
+    border: 2px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    transition: transform 0.1s;
+}
+
+.modal-meme:active {
+    transform: scale(0.98);
+}
+
+.instruction {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    background: #ffebf0;
+    padding: 5px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.secondary {
+    background: var(--accent-blue);
+    margin-bottom: 20px;
+}
+
+/* Punch Bag Section */
+.punch-bag-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.punch-btn {
+    background: #ff4757;
+    color: white;
+    font-family: var(--font-header);
+    border: 3px solid #000;
+    padding: 20px 30px;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    box-shadow: 6px 6px 0 #000;
+    transition: transform 0.05s;
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.4;
+}
+
+.punch-btn:active {
+    transform: scale(0.9) translate(3px, 3px);
+    box-shadow: 2px 2px 0 #000;
+    background: #ff6b81;
+}
+
+/* Rage Meter */
+.rage-meter-container {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 300px;
+    font-family: var(--font-header);
+    font-size: 0.8rem;
+}
+
+.rage-meter-bar {
+    height: 25px;
+    border: 2px solid #000;
+    background: #fff;
+    margin-top: 5px;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.rage-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ffeb3b, #ff0000);
+    transition: width 0.2s ease-out;
+}
+
+/* Sticker Grid */
+.sticker-grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    min-height: 110px;
+    /* Space for stickers */
+    margin-top: 20px;
+}
+
+.sticker-slot {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sticker {
+    width: 100%;
+    height: auto;
+    animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sticker.hidden {
+    display: none;
+}
